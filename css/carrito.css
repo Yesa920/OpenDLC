@@ -1,0 +1,335 @@
+:root {
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #2563eb;
+  --success: #16a34a;
+  --danger: #ef4444;
+  --glass: rgba(255,255,255,0.6);
+  --radius: 12px;
+  --shadow: 0 6px 20px rgba(15,23,42,0.08);
+  --maxw: 1100px;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #eef2ff 0%, #f8fbff 45%, #ffffff 100%);
+  color: #0f172a;
+  line-height: 1.55;
+  padding: 24px 14px;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  min-height: 100vh;
+}
+
+.page {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 16px 0 36px;
+}
+
+.navbar {
+  background: rgba(255,255,255,0.95);
+  border-radius: 18px;
+  box-shadow: 0 18px 45px rgba(15,23,42,0.08);
+}
+/* Contenedor principal */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 28px;
+}
+
+
+/* NAVBAR SIMPLE */
+.navbar {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto 20px auto;
+  padding: 12px 18px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* BOTÓN VOLVER */
+.nav-back {
+  text-decoration: none;
+  font-weight: 500;
+  color: #0f172a;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.nav-back:hover {
+  background: #f1f5f9;
+  color: var(--accent);
+}
+/* --- SECCIÓN PERFIL Y DROPDOWN (TRADUCIDO Y MEJORADO) --- */
+.perfil {
+  position: relative;
+  display: inline-block;
+}
+
+/* El botón azul del icono de usuario */
+.perfil-btn {
+  background-color: #3498db; /* Azul de la imagen */
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 10px; /* Bordes redondeados como el botón de añadir */
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.perfil-btn:hover {
+  background-color: #2980b9;
+}
+
+/* El menú desplegable */
+.dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 120%; /* Un poco más de separación para que no pegue al botón */
+  background: white;
+  border-radius: 12px; /* Más redondeado como la imagen */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  overflow: hidden;
+  min-width: 180px;
+  z-index: 1000;
+  border: 1px solid #f0f0f0;
+}
+
+/* Clase que activa el menú (controlada por tu JS) */
+.perfil.active .dropdown {
+  display: block;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Enlaces del menú */
+.dropdown a {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #1e293b; /* Color oscuro profesional */
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-bottom: 1px solid #f8fafc;
+  transition: background 0.2s;
+}
+
+.dropdown a:last-child {
+  border-bottom: none;
+}
+
+.dropdown a:hover {
+  background: #f1f5f9;
+  color: #3498db;
+}
+
+/* Animación suave para que aparezca mejor */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Para evitar que el float rompa el diseño */
+.container::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.header .title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.header .subtitle {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+
+/* Tarjeta principal */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px;
+  margin-bottom: 18px;
+}
+
+/* Tabla simple */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 6px;
+}
+.table th, .table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.95rem;
+}
+.table thead th {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+/* Botones */
+input[type="submit"],
+.botonAbajo {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 15px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+input[type="submit"]:hover,
+.botonAbajo:hover {
+  background-color: #2980b9;
+}
+
+/* Utilidades */
+.badge {
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.footer-note {
+  color: var(--muted);
+  font-size: 0.87rem;
+  margin-top: 10px;
+  text-align: center;
+}
+/* seleecionamos que estamos pagando*/
+input, select {
+    border: 1px solid #ccc;
+    padding: 6px;
+    border-radius: 6px;
+}
+
+/* Si tiene error → borde rojo */
+/* Borde rojo cuando el campo es inválido */
+input:invalid, select:invalid {
+    border: 2px solid red !important;
+}
+
+/* Borde verde cuando el campo es válido */
+input:valid, select:valid {
+    border: 2px solid green !important;
+}
+
+/* MENSAJE personalizado debajo del input */
+.mensaje-error {
+    display: none;
+    color: red;
+    font-size: 0.9em;
+}
+
+/* Mostrar mensaje cuando sea inválido */
+input:invalid + .mensaje-error,
+select:invalid + .mensaje-error {
+    display: block;
+}
+/* Imagen seleccionada para método de pago → borde verde */
+input:invalid, select:invalid {
+    border: 2px solid red;
+}
+
+input:required:invalid + .mensaje-error,
+select:required:invalid + .mensaje-error {
+    display: block;
+}
+.mensaje-error {
+    display: none;
+    color: red;
+    font-size: 0.9em;
+}
+/* Responsive */
+@media (max-width: 900px) {
+  body { padding: 20px 12px; }
+  .header { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+
+/* ===== Tema profesional azul claro ===== */
+:root{
+  --shop-bg-1:#edf6ff;
+  --shop-bg-2:#dcecff;
+  --shop-card:#ffffff;
+  --shop-border:#c5ddfb;
+  --shop-title:#133f77;
+  --shop-text:#48678f;
+  --shop-primary:#2f80ed;
+  --shop-primary-hover:#2369c9;
+}
+
+body{
+  background: linear-gradient(180deg, var(--shop-bg-1) 0%, var(--shop-bg-2) 100%);
+  color: var(--shop-text);
+}
+
+.container, .navbar, .card{
+  background: var(--shop-card);
+  border: 1px solid var(--shop-border);
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(47,128,237,0.12);
+}
+
+.nav-back,
+.dropdown a,
+.header .title{
+  color: var(--shop-title);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea{
+  border: 1px solid var(--shop-border);
+  background: #f8fbff;
+}
+
+input[type="submit"],
+.botonAbajo,
+.perfil-btn{
+  background: linear-gradient(180deg, #53a1ff 0%, var(--shop-primary) 100%);
+}
+
+input[type="submit"]:hover,
+.botonAbajo:hover,
+.perfil-btn:hover{
+  background: var(--shop-primary-hover);
+}

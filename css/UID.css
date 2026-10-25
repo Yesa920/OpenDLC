@@ -1,0 +1,400 @@
+/* ====== Estilos generales ====== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+/* ====== Barra superior ====== */
+.top-bar {
+  display: flex;
+  justify-content: space-between; /* separa izquierda y derecha */
+  align-items: center;
+  background-color: white; /* fondo blanco */
+  padding: 8px 15px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Contenedor derecha */
+.nav-right {
+  display: flex;
+  gap: 8px;
+}
+
+/* Botones */
+.top-bar .btn {
+  background-color: #3498db;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+/* Botón inicio (izquierda) */
+.top-bar .inicio {
+  background-color: #27ae60;
+}
+
+/* Hover */
+.top-bar .btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+/* ====== Título principal ====== */
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+/* ====== Formulario ====== */
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 25px 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ====== Etiquetas ====== */
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #34495e;
+}
+
+/* ====== Campos de entrada (text, password, select, textarea) ====== */
+input[type="text"],
+input[type="password"],
+input[type="tel"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* ====== Efecto al enfocar ====== */
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #2980b9;
+  outline: none;
+}
+
+/* ====== Radio buttons ====== */
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* ====== Botones ====== */
+input[type="submit"] {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+
+
+input[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+/* ====== Enlaces ====== */
+a {
+  display: inline-block;
+  margin-top: 15px;
+  margin-right: 10px;
+  color: #2980b9;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ====== Textarea ====== */
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+.admin-float-btn {
+    all: unset;
+    position: fixed;   /* Siempre visible al hacer scroll */
+    bottom: 20px;      /* Distancia desde el borde inferior */
+    right: 20px;       /* Pegado al borde derecho */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    z-index: 10001;    /* Por encima de todo lo demás */
+    transition: all 0.3s ease;
+}
+
+.admin-icon-circle {
+    width: 60px;
+    height: 60px;
+    background: #007bff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+/* Efecto de brillo de la imagen original */
+.admin-icon-circle::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 10%;
+    width: 80%;
+    height: 35%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+    border-radius: 50%;
+}
+
+.admin-emoji {
+    font-size: 26px;
+}
+
+.admin-label {
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Efecto al pasar el ratón */
+.admin-float-btn:hover {
+    transform: scale(1.1) translateY(-5px);
+}
+
+.admin-float-btn:hover .admin-icon-circle {
+    background: #0056b3;
+}
+/* ====== Boton Personalizados ====== */
+.botonAbajo{
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+/* ===== Tema profesional azul claro ===== */
+:root{
+  --pro-bg-1:#eef6ff;
+  --pro-bg-2:#dcecff;
+  --pro-card:#ffffff;
+  --pro-text:#0f2747;
+  --pro-muted:#4f6b8f;
+  --pro-border:#c9def8;
+  --pro-primary:#2f80ed;
+  --pro-primary-hover:#2369c9;
+}
+
+body{
+  background: linear-gradient(180deg, var(--pro-bg-1) 0%, var(--pro-bg-2) 100%);
+  color: var(--pro-text);
+}
+
+.top-bar, form{
+  background: var(--pro-card);
+  border: 1px solid var(--pro-border);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(47,128,237,0.12);
+}
+
+h1, h2, label{
+  color: var(--pro-text);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="tel"],
+input[type="email"],
+select,
+textarea{
+  border: 1px solid var(--pro-border);
+  border-radius: 10px;
+  background: #f8fbff;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus{
+  border-color: var(--pro-primary);
+  box-shadow: 0 0 0 3px rgba(47,128,237,0.18);
+}
+
+input[type="submit"],
+.top-bar .btn,
+.botonAbajo{
+  background: linear-gradient(180deg, #53a1ff 0%, var(--pro-primary) 100%);
+  color: #fff;
+  border-radius: 10px;
+}
+
+input[type="submit"]:hover,
+.top-bar .btn:hover,
+.botonAbajo:hover{
+  background: var(--pro-primary-hover);
+}
+
+a{
+  color: var(--pro-primary);
+}
+
+/* ===== Layout profesional de acceso ===== */
+.access-layout {
+  max-width: 1200px;
+  margin: 28px auto;
+  padding: 24px;
+}
+
+.access-hero {
+  margin-bottom: 20px;
+}
+
+.access-kicker {
+  margin: 0;
+  color: #2f80ed;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.access-hero h1 {
+  margin: 6px 0 8px 0;
+  font-size: 1.9rem;
+}
+
+.access-lead {
+  margin: 0 0 14px 0;
+  color: var(--pro-muted);
+}
+
+.access-shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.access-forms {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.access-form {
+  margin: 0;
+}
+
+.access-form input[type="submit"] {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.access-help {
+  text-align: center;
+  color: #385b84;
+  margin: 16px 0 0 0;
+}
+
+/* ===== Refresh visual premium acceso ===== */
+:root{
+  --pro-bg-1:#d8e7fb;
+  --pro-bg-2:#bfd5f2;
+  --pro-card:#fdfefe;
+  --pro-text:#0d2f58;
+  --pro-muted:#365983;
+  --pro-border:#9dbce2;
+  --pro-primary:#1d5fb8;
+  --pro-primary-hover:#154a92;
+}
+
+body{
+  background: linear-gradient(180deg, #cfdef4 0%, #b8d1ef 100%);
+  font-family: "Segoe UI", "Inter", Arial, sans-serif;
+}
+
+.top-bar, form, .card{
+  box-shadow: 0 10px 24px rgba(17, 64, 130, 0.14);
+}
+
+.access-hero{
+  border:1px solid var(--pro-border);
+}
+
+.access-badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:10px 0 0 0;
+}
+
+.access-badges span{
+  background:#e8f1fd;
+  border:1px solid #a7c4e7;
+  color:#1d426e;
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:0.82rem;
+  font-weight:600;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  display:inline-block;
+}
+
+.dot-secure{ background:#1d5fb8; }
+.dot-profile{ background:#2f7fd1; }
+.dot-support{ background:#4a95df; }
+

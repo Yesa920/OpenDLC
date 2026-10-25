@@ -1,0 +1,9 @@
+# Caddy: pone HTTPS delante de la web. El dominio viene del .env (DOMINIO=...).
+{$DOMINIO:localhost} {
+	encode gzip
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		-Server
+	}
+	reverse_proxy web:80
+}

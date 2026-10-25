@@ -1,0 +1,27 @@
+# ============ NUNCA subir a Git ============
+# Secretos (claves de base de datos, correo, IA, token del chat)
+.env
+.env.*
+!.env.example
+
+# Datos generados al usar la web
+chat.json
+DatosDelComponente.txt
+
+# Copias, pruebas y temporales
+*.zip
+*.bak
+*.log
+__pycache__/
+*.pyc
+pruebas/
+notas.txt
+para probar.txt
+pccomponentes (2).sql
+limpiar_para_github.ps1
+
+# Editor / sistema
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

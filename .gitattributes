@@ -1,0 +1,12 @@
+# Normaliza los saltos de linea. Los .sh y la configuracion de Linux tienen que ir con LF,
+# si no, Docker en Windows no puede ejecutarlos.
+* text=auto
+*.sh text eol=lf
+*.conf text eol=lf
+Caddyfile text eol=lf
+Dockerfile text eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary

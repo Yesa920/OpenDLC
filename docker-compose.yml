@@ -1,0 +1,93 @@
+name: opendlc
+services:  
+  # 1) La web (PHP + Apache)
+  web:
+    build: ./docker/web
+    ports:
+      - "127.0.0.1:8080:80"        # solo accesible desde tu ordenador
+    volumes:
+      - ./:/var/www/html           # tu carpeta del proyecto = la web
+    environment:
+      DB_HOST: db                  # el nombre del servicio de abajo
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_NAME: ${DB_NAME}
+      MAIL_USER: ${MAIL_USER}      # correo desde el que se envian los avisos
+      MAIL_PASS: ${MAIL_PASS}      # su contrasena de aplicacion de Google
+      CHAT_URL: http://chatbot:5000
+      CHAT_TOKEN: ${CHAT_TOKEN}    # contrasena compartida web <-> chatbot
+      IA_URL: ${IA_URL:-}          # IA gratuita del chatbot (vacio = sin IA)
+      IA_MODEL: ${IA_MODEL:-}
+      IA_KEY: ${IA_KEY:-}
+      IA_MAX_DIA: ${IA_MAX_DIA:-300}
+      DEMO_MODE: ${DEMO_MODE:-0}   # 1 = boton "Entrar como cliente demo" en el login
+    depends_on:
+      - db
+      - chatbot
+
+  # 2) La base de datos (MariaDB, la misma que usa XAMPP)
+  db:
+    image: mariadb:10.11
+    command: ["--event-scheduler=ON"]   # activa los eventos programados (reponer stock, procesar devoluciones)
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASS}
+      MARIADB_DATABASE: ${DB_NAME}
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASS}
+    volumes:
+      - db_data:/var/lib/mysql                        # los datos se guardan aqui
+      - ./db/init:/docker-entrypoint-initdb.d:ro      # carga el .sql y recorta permisos, la primera vez
+    # No hay "ports": la base de datos no se abre al exterior
+
+  # 3) El chatbot (Flask)
+  chatbot:
+    build: ./docker/chatbot
+    # No hay "ports": solo la web puede hablar con el chatbot, por dentro de Docker
+    volumes:
+      - ./server.py:/app/server.py
+      - chat_data:/data
+    environment:
+      CHAT_FILE: /data/chat.json
+      CHAT_TOKEN: ${CHAT_TOKEN}
+
+  # 4) phpMyAdmin: para ver y editar la base de datos desde el navegador
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - "127.0.0.1:8081:80"        # solo accesible desde tu ordenador
+    environment:
+      PMA_HOST: db                 # se conecta al servicio "db"
+    depends_on:
+      - db
+
+  # 5) HTTPS automatico para publicar la web en internet (solo con --profile produccion)
+  #    Pide y renueva solo el certificado gratuito de Let's Encrypt. Ver docs/DESPLIEGUE_HTTPS.md
+  caddy:
+    image: caddy:2
+    profiles: ["produccion"]
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMINIO: ${DOMINIO:-localhost}
+    volumes:
+      - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - web
+
+  # 6) OPCIONAL: IA local y 100% gratis (sin clave). Solo arranca con:
+  #    docker compose --profile ia-local up -d
+  ollama:
+    image: ollama/ollama
+    profiles: ["ia-local"]
+    volumes:
+      - ollama_data:/root/.ollama
+
+volumes:
+  db_data:
+  chat_data:
+  ollama_data:
+  caddy_data:
+  caddy_config:
